@@ -140,7 +140,7 @@
 
 													<form:form action="userDetail/newcertificate" method="POST"
 														enctype="multipart/form-data">
-														<input id="file" type="file" name="file" />
+														<input id="file" type="file" name="file" accept=".crt,.cer,.pem,.p12,.pfx" />
 
 														<button type="submit" style="margin-top: 5px;">Upload</button>
 													</form:form>
