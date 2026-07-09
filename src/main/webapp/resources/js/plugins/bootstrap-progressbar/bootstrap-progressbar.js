@@ -114,7 +114,20 @@
                 }
 
                 if (options.display_text !== 'none') {
-                    text = options.use_percentage ? options.percent_format(current_percentage) : options.amount_format(current_value, aria_valuemax, aria_valuemin);
+                    try {
+                        if (options.use_percentage && typeof options.percent_format === 'function') {
+                            text = String(options.percent_format(current_percentage)).replace(/<[^>]*>/g, '');
+                        }
+                        else if (!options.use_percentage && typeof options.amount_format === 'function') {
+                            text = String(options.amount_format(current_value, aria_valuemax, aria_valuemin)).replace(/<[^>]*>/g, '');
+                        }
+                        else {
+                            text = options.use_percentage ? Progressbar.defaults.percent_format(current_percentage) : Progressbar.defaults.amount_format(current_value, aria_valuemax, aria_valuemin);
+                        }
+                    }
+                    catch (e) {
+                        text = options.use_percentage ? Progressbar.defaults.percent_format(current_percentage) : Progressbar.defaults.amount_format(current_value, aria_valuemax, aria_valuemin);
+                    }
 
                     if (options.display_text === 'fill') {
                         $this.text(text);
