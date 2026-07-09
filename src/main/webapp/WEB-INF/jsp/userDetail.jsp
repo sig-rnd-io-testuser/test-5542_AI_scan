@@ -100,7 +100,7 @@
 							 			</spring:url>
 										<img id="userAvatarImage" src="${userAvatar}" class="img-thumbnail" alt="avatar" style="border:solid 1px grey;cursor:pointer;" />
 										<form:form id="userAvatarForm" action="userDetail/avatar/update" method="POST" style="display:none" enctype="multipart/form-data">
-											<input id="userAvatarInput" type="file" name="imageFile"/>
+											<input id="userAvatarInput" type="file" name="imageFile" accept=".jpg,.jpeg,.png,.gif"/>
 										</form:form>
 									</div>
 									<div class="col-sm-10">
